@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine Fault Detector</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with theme toggle -->
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-car"></i> Engine Fault Detector</h1>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Info Card -->
+            <div class="info-card">
+                <i class="fas fa-info-circle"></i>
+                <p>Upload an audio file or record engine sound to detect potential faults</p>
+            </div>
+
+            <!-- Upload Section -->
+            <section class="upload-section card">
+                <h2><i class="fas fa-upload"></i> Upload Audio File</h2>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="audioFile" accept="audio/*,.mp3,.wav,.ogg,.m4a,.flac,.aac,.webm" hidden>
+                    <label for="audioFile" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Choose Audio File</span>
+                    </label>
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+                <button class="btn btn-primary" id="uploadBtn" disabled>
+                    <i class="fas fa-paper-plane"></i> Analyze Audio
+                </button>
+            </section>
+
+            <!-- Recording Section -->
+            <section class="recording-section card">
+                <h2><i class="fas fa-microphone"></i> Record Audio</h2>
+                <div class="recording-controls">
+                    <button class="btn btn-record" id="recordBtn">
+                        <i class="fas fa-microphone"></i> Start Recording
+                    </button>
+                    <button class="btn btn-stop" id="stopBtn" disabled>
+                        <i class="fas fa-stop"></i> Stop Recording
+                    </button>
+                    <div class="recording-status" id="recordingStatus"></div>
+                </div>
+                <div class="audio-preview" id="audioPreview"></div>
+                <button class="btn btn-primary" id="analyzeRecordingBtn" disabled>
+                    <i class="fas fa-search"></i> Analyze Recording
+                </button>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section card" id="resultsSection" style="display: none;">
+                <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+                <div class="result-content">
+                    <div class="result-icon" id="resultIcon"></div>
+                    <div class="result-details">
+                        <div class="result-label">
+                            <span class="label-title">Status:</span>
+                            <span class="label-value" id="resultLabel"></span>
+                        </div>
+                        <div class="result-confidence">
+                            <span class="confidence-title">Confidence:</span>
+                            <div class="confidence-bar-container">
+                                <div class="confidence-bar" id="confidenceBar"></div>
+                            </div>
+                            <span class="confidence-value" id="confidenceValue"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="spinner"></div>
+                <p>Analyzing audio...</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Engine Fault Detector. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

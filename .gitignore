@@ -1,3 +1,6 @@
-.venv
-Car-Engine-Sounds-Dataset-main
-engine_fault_detection_dataset.csv
+.venv/
+Car-Engine-Sounds-Dataset-main/
+media/
+db.sqlite3
+*.h5
+*.csv
